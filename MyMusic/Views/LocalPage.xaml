@@ -7,7 +7,7 @@
     xmlns:views="clr-namespace:MyMusic.Views"
     x:Class="MyMusic.Views.LocalPage"
     Shell.NavBarIsVisible="false"
-    Title="所有音乐">
+    Title="All Music">
 
     <StackLayout HeightRequest="800">
         <Grid RowDefinitions="640,100">

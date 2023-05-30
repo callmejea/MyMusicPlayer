@@ -16,7 +16,7 @@
             <Entry x:Name="MusicContentUrl" VerticalOptions="Center"  HeightRequest="30" Grid.Row="2" Grid.Column="1" Placeholder=""/>-->
             
             <Button
-                Text="保存"
+                Text="Save"
                 Grid.Row="1"
                 Grid.Column="0"
                 Clicked="SaveClicked"
