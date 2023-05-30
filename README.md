@@ -1,8 +1,8 @@
 # MyMusicPlayer
 
 ### A cross platform local music player. Do not need network.
-    <img src="static/player.jpg" alt="Player list" width="800">
-    <img src="static/config.jpg" alt="Player list" width="800">
+<img src="static/player.jpg" alt="Player list" width="800">
+<img src="static/config.jpg" alt="Player list" width="800">
 
 ### use
 - open
