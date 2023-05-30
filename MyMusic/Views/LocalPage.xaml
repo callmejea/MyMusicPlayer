@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Unloaded="ContentPage_Unloaded"
+    xmlns:views="clr-namespace:MyMusic.Views"
+    x:Class="MyMusic.Views.LocalPage"
+    Shell.NavBarIsVisible="false"
+    Title="所有音乐">
+
+    <StackLayout HeightRequest="800">
+        <Grid RowDefinitions="640,100">
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                RowDefinitions="600,80">
+                <CollectionView x:Name="musicListCoeection"
+                                ItemsSource="{Binding MusicList}"
+                                Margin="20,40,20,20"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                SelectionMode="Single"
+                                SelectionChanged="MusicListCoeection_SelectionChanged">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" Padding="0, 5" FontSize="22" HorizontalOptions="Fill"/>
+                                <!--<Label Text="{Binding Author}" FontSize="14" TextColor="Silver" HorizontalOptions="Fill"/>-->
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="Playing ：-"
+                       x:Name="nowMusicName"
+                       HorizontalOptions="Center"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       FontSize="24">
+                </Label>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+            
+                <toolkit:MediaElement x:Name="mediaElement" ShouldShowPlaybackControls="False" />
+
+                <HorizontalStackLayout  BindingContext="{x:Reference mediaElement}" HorizontalOptions="Center">
+                    <Button Text="Previous"
+                            HeightRequest="40"
+                            Clicked="PreviousClicked">
+                    </Button>
+                    <Button Text="Play"
+                            Margin="15,0,0,0"
+                            HeightRequest="40"
+                            HorizontalOptions="CenterAndExpand"
+                            Clicked="OnPlayPauseButtonClicked">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding CurrentState}"
+                                         Value="{x:Static toolkit:Primitives.MediaElementState.Playing}">
+                                <Setter Property="Text"
+                                    Value="Pause" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding CurrentState}"
+                                         Value="{x:Static toolkit:Primitives.MediaElementState.Buffering}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Text="Stop"
+                            HeightRequest="40"
+                            Margin="15,0,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Clicked="OnStopButtonClicked">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding CurrentState}"
+                                         Value="{Binding Primitives.MediaElementState.Stopped}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Text="Next"
+                            Margin="15,0,0,0"
+                            Clicked="NextClicked" 
+                            HeightRequest="40">
+                    </Button>
+                    
+                    <Button Text=""
+                            x:Name="PlayTypeText"
+                            Margin="15,0,0,0"
+                            Clicked="PlayTypeClicked" 
+                            HeightRequest="40">
+                    </Button>
+                </HorizontalStackLayout>
+            </Grid> 
+        </Grid>
+    </StackLayout>
+</ContentPage>

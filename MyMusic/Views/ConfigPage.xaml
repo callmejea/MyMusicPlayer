@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMusic.Views.ConfigPage"
+             Shell.NavBarIsVisible="false"
+             Title="Config">
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="200,400" RowDefinitions="40,40,40,40">
+            <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="loacl dir" HorizontalOptions="Center" Padding="0,0,20,0"></Label>
+            <Entry x:Name="localDir" HeightRequest="30"  VerticalOptions="Center"  Grid.Row="0" Grid.Column="1" Placeholder=""/>
+
+            <!--<Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center"  Text="list page url" HorizontalOptions="Center" Padding="0,0,20,0"></Label>
+            <Entry x:Name="listPageUrl" Grid.Row="1" VerticalOptions="Center"  HeightRequest="30" Grid.Column="1" Placeholder="must start with http or https" />
+
+            <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center"  Text="music content url" HorizontalOptions="Center" Padding="0,0,20,0"></Label>
+            <Entry x:Name="MusicContentUrl" VerticalOptions="Center"  HeightRequest="30" Grid.Row="2" Grid.Column="1" Placeholder=""/>-->
+            
+            <Button
+                Text="保存"
+                Grid.Row="1"
+                Grid.Column="0"
+                Clicked="SaveClicked"
+                    ></Button>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
